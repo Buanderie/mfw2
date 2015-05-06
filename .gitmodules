@@ -1,0 +1,6 @@
+[submodule "extdeps/picotest"]
+	path = extdeps/picotest
+	url = https://github.com/Buanderie/picotest.git
+[submodule "extdeps/picojson"]
+	path = extdeps/picojson
+	url = https://github.com/kazuho/picojson.git
