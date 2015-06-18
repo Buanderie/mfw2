@@ -3,7 +3,7 @@ project(LIBMONADIC_TEST CXX)
 
 # Set include directories
 include_directories( ${MFW_SOURCE_DIR}/libmonadic/include )
-include_directories( ${MFW_SOURCE_DIR}/extdeps/picotest )
+include_directories( ${MFW_SOURCE_DIR}/extdeps/Catch )
 
 set( DEPS "${DEPS};monadic" )
 

@@ -1,31 +1,18 @@
+#define CATCH_CONFIG_MAIN  // This tells Catch to provide a main() - only do this in one cpp file
 
-// Internal
-#include <monadic.h>
+// Catch
+#include "catch.hpp"
 
-// PicoTest
-#include "picotest.h"
+// MFW
+#include "monadic.h"
 
-TEST( monadic, foo )
-{
-    EXPECT_EQ( foo(), 0 );
+unsigned int Factorial( unsigned int number ) {
+    return number <= 1 ? number : Factorial(number-1)*number;
 }
 
-TEST( azer, azazaz )
-{
-    EXPECT_EQ( 1, 1 );
-}
-
-TEST( azer, ererer )
-{
-    EXPECT_EQ( 1, 5 );
-}
-
-TEST( azer, rtrtrt )
-{
-    EXPECT_EQ( 1, 5 );
-}
-
-int main( int argc, char** argv )
-{
-    RUN_ALL_TESTS();
+TEST_CASE( "Factorials are computed", "[factorial]" ) {
+    REQUIRE( Factorial(1) == 1 );
+    REQUIRE( Factorial(2) == 2 );
+    REQUIRE( Factorial(3) == 6 );
+    REQUIRE( Factorial(10) == 3628800 );
 }
