@@ -20,6 +20,15 @@ include_directories( ${LUAJIT_INCLUDE_DIR} )
 set( DEPS "${DEPS};${LUAJIT_LIBRARIES}" )
 endif()
 
+# ZMQ
+find_package( ZMQ )
+if( ZMQ_FOUND )
+message("Found ZeroMQ")
+include_directories( ${ZMQ_INCLUDE_DIR} )
+include_directories( ${MFW_SOURCE_DIR}/extdeps/cppzmq )
+set( DEPS "${DEPS};${ZMQ_LIBRARY}" )
+endif()
+
 # Set include directories
 include_directories( ${LIBMONADIC_SOURCE_DIR}/include )
 

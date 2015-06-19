@@ -7,3 +7,9 @@
 [submodule "extdeps/cereal"]
 	path = extdeps/cereal
 	url = https://github.com/USCiLab/cereal.git
+[submodule "extdeps/Catch"]
+	path = extdeps/Catch
+	url = https://github.com/philsquared/Catch.git
+[submodule "extdeps/cppzmq"]
+	path = extdeps/cppzmq
+	url = https://github.com/zeromq/cppzmq.git

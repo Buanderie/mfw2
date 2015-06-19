@@ -4,13 +4,15 @@
 #include "node.h"
 #include "pin.h"
 #include "guid.h"
+#include "identifiable.h"
 
 // STL
-#include <map>
+#include <vector>
+#include <memory>
 
 namespace monadic
 {
-    class Node
+    class Node : public monadic::Identifiable
     {
     public:
         Node(){}
@@ -20,7 +22,7 @@ namespace monadic
         void addPin( monadic::Pin* pin, const monadic::Guid& guid=monadic::Guid() );
 
     protected:
-        std::map< monadic::Guid, monadic::Pin* > _pins;
+        std::vector< std::shared_ptr<monadic::Pin> > _pins;
 
     };
 }
