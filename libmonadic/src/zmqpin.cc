@@ -5,14 +5,18 @@
 // ZMQ
 #include <zmq.hpp>
 
-using namespace zmq;
+// STL
+#include <sstream>
 
 // Global ZMQ context
-zmq::context_t _zmqContext
+zmq::context_t _zmqContext(1);
+
+using namespace std;
 
 namespace monadic
 {
-	ZMQPin::ZMQPin()
+    ZMQPin::ZMQPin(monadic::Pin::PinMode pinMode)
+        :Pin(pinMode)
 	{
 
 	}
@@ -24,8 +28,21 @@ namespace monadic
 
 	void ZMQPin::setup()
 	{
-		// 
-	}
+        zmq::socket_t * ls;
+        // Create socket
+        if( _pinMode == Pin::PIN_MODE_OUTPUT )
+        {
+            ls = new zmq::socket_t( _zmqContext, ZMQ_PUB );
+            stringstream sstr;
+            sstr << "inproc://" << _guid.toString();
+            ls->bind( sstr.str().c_str() );
+        }
+        else if( _pinMode == Pin::PIN_MODE_INPUT )
+        {
+            ls = new zmq::socket_t( _zmqContext, ZMQ_SUB );
+        }
+        _pinSocket = (void*)ls;
+    }
 
 	void ZMQPin::onConnect( std::shared_ptr<monadic::Link> link )
 	{

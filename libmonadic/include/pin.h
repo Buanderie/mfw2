@@ -2,33 +2,40 @@
 
 // Internal
 #include "identifiable.h"
-#include "link.h"
 
 // STL
 #include <memory>
 
-// ZMQ
-#include <zmq.hpp>
-
 namespace monadic
 {
-    class Pin : public monadic::Identifiable
+class Link;
+class Pin : public monadic::Identifiable
+{
+public:
+    typedef enum
     {
-    public:
-		Pin();
-		virtual ~Pin(){}
+        PIN_MODE_INPUT=0,
+        PIN_MODE_OUTPUT
+    } PinMode;
 
-		virtual void setup();
+    Pin( monadic::Pin::PinMode pinMode )
+        :_pinMode(pinMode)
+    {}
 
-		virtual void onConnect( std::shared_ptr<monadic::Link> link );
-		virtual void onCreate();
+    virtual ~Pin(){}
 
-		virtual size_t send( const void* data, size_t length );
-		virtual size_t receive( const void* data );
+    virtual void setup()=0;
 
-    private:
+    virtual void onConnect( std::shared_ptr<monadic::Link> link )=0;
+    virtual void onCreate()=0;
 
-    protected:
+    virtual size_t send( const void* data, size_t length )=0;
+    virtual size_t receive( const void* data )=0;
 
-    };
+private:
+
+protected:
+    PinMode _pinMode;
+
+};
 }
