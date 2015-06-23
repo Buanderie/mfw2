@@ -8,9 +8,10 @@
 
 TEST_CASE( "Pins can be created", "[pin]" ) {
 
-    monadic::Pin * p = new monadic::ZMQPin(monadic::Pin::PIN_MODE_OUTPUT);
-    p->setup();
-
-    REQUIRE( 2 == 1 );
+    std::shared_ptr<monadic::Pin> p = std::shared_ptr<monadic::Pin>(new monadic::ZMQPin( monadic::Pin::PIN_MODE_INPUT ));
+    std::shared_ptr<monadic::Pin> p2 = std::shared_ptr<monadic::Pin>(new monadic::ZMQPin( monadic::Pin::PIN_MODE_OUTPUT ));
+    monadic::Link l( p, p2 );
+    
+    REQUIRE( 1 == 4 );
 
 }

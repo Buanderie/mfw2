@@ -18,24 +18,29 @@ public:
         PIN_MODE_OUTPUT
     } PinMode;
 
-    Pin( monadic::Pin::PinMode pinMode )
+    Pin( monadic::Pin::PinMode pinMode, bool needResetGuid=true )
         :_pinMode(pinMode)
-    {}
+    {
+        if( needResetGuid )
+            resetGuid();
+    }
 
     virtual ~Pin(){}
 
-    virtual void setup()=0;
-
-    virtual void onConnect( std::shared_ptr<monadic::Link> link )=0;
+    virtual void setup(){};
+    virtual void connect(std::shared_ptr<monadic::Pin> p){};
+    
+    virtual void onConnect( std::shared_ptr<monadic::Link> link ){};
     virtual void onCreate()=0;
 
-    virtual size_t send( const void* data, size_t length )=0;
-    virtual size_t receive( const void* data )=0;
+    virtual size_t send( const void* data, size_t length ){return 0;};
+    virtual size_t receive( const void* data ){return 0;};
 
 private:
 
 protected:
     PinMode _pinMode;
+    
 
 };
 }

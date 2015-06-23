@@ -17,7 +17,8 @@ namespace monadic
             virtual ~ZMQPin();
 
             virtual void setup();
-
+            virtual void connect(std::shared_ptr<monadic::Pin> p);
+            
             virtual void onConnect( std::shared_ptr<monadic::Link> link );
             virtual void onCreate();
             virtual size_t send( const void* data, size_t length );

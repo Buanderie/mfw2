@@ -11,7 +11,12 @@ namespace monadic
     class Link
     {
     public:
-        Link(){}
+        Link( std::shared_ptr<monadic::Pin> from, std::shared_ptr<monadic::Pin> to )
+        {
+            from->connect(to);
+            to->connect(from);
+        }
+        
         virtual ~Link(){}
 
         std::shared_ptr<monadic::Pin> getFromPin();

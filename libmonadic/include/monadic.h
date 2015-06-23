@@ -6,6 +6,7 @@ int foo();
 #include "node.h"
 #include "pin.h"
 #include "zmqpin.h"
+#include "link.h"
 
 // SYSTEM
 #include "system/system.h"
