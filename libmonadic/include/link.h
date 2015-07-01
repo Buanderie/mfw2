@@ -17,7 +17,10 @@ namespace monadic
             to->connect(from);
         }
         
-        virtual ~Link(){}
+        virtual ~Link()
+        {
+
+        }
 
         std::shared_ptr<monadic::Pin> getFromPin();
         std::shared_ptr<monadic::Pin> getToPin();

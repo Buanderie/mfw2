@@ -26,7 +26,18 @@ if( ZMQ_FOUND )
 message("Found ZeroMQ")
 include_directories( ${ZMQ_INCLUDE_DIR} )
 include_directories( ${MFW_SOURCE_DIR}/extdeps/cppzmq )
+message( "ZMQ_LIB=${ZMQ_LIBRARY}" )
 set( DEPS "${DEPS};${ZMQ_LIBRARY}" )
+endif()
+
+#Nanomsg
+find_package( nanomsg )
+if( NANOMSG_FOUND )
+message("Found Nanomsg")
+include_directories( ${NANOMSG_INCLUDE_DIR} )
+#include_directories( ${MFW_SOURCE_DIR}/extdeps/cppzmq )
+message( "NANOMSG_LIB=${NANOMSG_LIBRARIES}" )
+set( DEPS "${DEPS};${NANOMSG_LIBRARIES}" )
 endif()
 
 # Set include directories

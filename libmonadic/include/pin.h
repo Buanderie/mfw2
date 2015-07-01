@@ -27,10 +27,13 @@ public:
 
     virtual ~Pin(){}
 
-    virtual void setup(){};
+    virtual void build(){};
     virtual void connect(std::shared_ptr<monadic::Pin> p){};
-    
-    virtual void onConnect( std::shared_ptr<monadic::Link> link ){};
+    virtual void disconnect(std::shared_ptr<monadic::Pin> p){}
+
+    virtual void onConnect( std::shared_ptr<monadic::Link> link ){}
+    virtual void onDisconnect( std::shared_ptr<monadic::Link> link){}
+    virtual void onBuild()=0;
     virtual void onCreate()=0;
 
     virtual size_t send( const void* data, size_t length ){return 0;};
