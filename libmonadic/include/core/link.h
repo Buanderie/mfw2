@@ -4,7 +4,7 @@
 #include "pin.h"
 
 // STL
-#include "memory"
+#include <memory>
 
 namespace monadic
 {
@@ -24,6 +24,8 @@ namespace monadic
 
         std::shared_ptr<monadic::Pin> getFromPin();
         std::shared_ptr<monadic::Pin> getToPin();
+
+		size_t send( void * data, size_t dataSize ); 
 
     private:
         std::shared_ptr<monadic::Pin> _from;

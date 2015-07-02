@@ -1,4 +1,4 @@
+#pragma once
 
-// Internal
 #include "scriptednode.h"
 

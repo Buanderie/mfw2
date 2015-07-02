@@ -2,6 +2,7 @@
 
 // Internal
 #include "identifiable.h"
+#include "packet.h"
 
 // STL
 #include <memory>
@@ -33,11 +34,12 @@ public:
 
     virtual void onConnect( std::shared_ptr<monadic::Link> link ){}
     virtual void onDisconnect( std::shared_ptr<monadic::Link> link){}
-    virtual void onBuild()=0;
-    virtual void onCreate()=0;
+    virtual void onBuild(){};
+    virtual void onCreate(){};
 
-    virtual size_t send( const void* data, size_t length ){return 0;};
-    virtual size_t receive( const void* data ){return 0;};
+	// 
+	std::vector< std::shared_ptr<Packet> > poll(); 
+
 
 private:
 

@@ -3,10 +3,7 @@
 int foo();
 
 // CORE
-#include "node.h"
-#include "pin.h"
-#include "zmqpin.h"
-#include "link.h"
+#include "core/core.h"
 
 // SYSTEM
 #include "system/system.h"

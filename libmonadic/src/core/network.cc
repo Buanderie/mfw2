@@ -1,6 +1,6 @@
 
 // Internal
-#include "network.h"
+#include "core/network.h"
 
 using namespace std;
 

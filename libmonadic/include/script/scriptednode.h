@@ -1,7 +1,7 @@
 #pragma once
 
 // Internal
-#include "node.h"
+#include "../core/node.h"
 
 namespace monadic
 {
