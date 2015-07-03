@@ -40,6 +40,9 @@ message( "NANOMSG_LIB=${NANOMSG_LIBRARIES}" )
 set( DEPS "${DEPS};${NANOMSG_LIBRARIES}" )
 endif()
 
+# Cereal
+include_directories( ${MFW_SOURCE_DIR}/extdeps/cereal/include )
+
 # Set include directories
 include_directories( ${LIBMONADIC_SOURCE_DIR}/include )
 

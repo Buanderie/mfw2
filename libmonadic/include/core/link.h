@@ -25,7 +25,10 @@ namespace monadic
         std::shared_ptr<monadic::Pin> getFromPin();
         std::shared_ptr<monadic::Pin> getToPin();
 
-		size_t send( void * data, size_t dataSize ); 
+		void send( std::unique_ptr<Packet> packet ); 
+		std::unique_ptr<Packet> recv();
+
+		bool dataAvailable();
 
     private:
         std::shared_ptr<monadic::Pin> _from;

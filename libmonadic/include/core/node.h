@@ -18,10 +18,16 @@ namespace monadic
         Node(){}
         virtual ~Node(){}
 
+		virtual void build(){}
+
     private:
-        void addPin( monadic::Pin* pin, const monadic::Guid& guid=monadic::Guid() );
 
     protected:
+		// Methods
+		std::shared_ptr<Pin> addPin( const std::string& pinLabel, monadic::Pin::PinMode pinMode );
+		bool checkPinLabelAvailability( const std::string& pinLabel );
+
+		// Variables
         std::vector< std::shared_ptr<monadic::Pin> > _pins;
 
     };

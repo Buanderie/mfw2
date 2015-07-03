@@ -6,11 +6,13 @@
 
 // STL
 #include <memory>
+#include <mutex>
+#include <condition_variable>
 
 namespace monadic
 {
 class Link;
-class Pin : public monadic::Identifiable
+class Pin
 {
 public:
     typedef enum
@@ -19,11 +21,9 @@ public:
         PIN_MODE_OUTPUT
     } PinMode;
 
-    Pin( monadic::Pin::PinMode pinMode, bool needResetGuid=true )
-        :_pinMode(pinMode)
+    Pin( monadic::Pin::PinMode pinMode, const std::string& label="None" )
+        :_pinMode(pinMode), _label(label)
     {
-        if( needResetGuid )
-            resetGuid();
     }
 
     virtual ~Pin(){}
@@ -34,17 +34,23 @@ public:
 
     virtual void onConnect( std::shared_ptr<monadic::Link> link ){}
     virtual void onDisconnect( std::shared_ptr<monadic::Link> link){}
-    virtual void onBuild(){};
-    virtual void onCreate(){};
+
+	std::string label() const;
 
 	// 
-	std::vector< std::shared_ptr<Packet> > poll(); 
-
+	std::vector< std::unique_ptr<Packet> > poll(); 
+	void signal_data();
 
 private:
+	std::mutex 				_incomingDataMtx;
+	std::condition_variable _incomingDataCnd;
+	bool					_incomingData;
+
+	std::vector< std::shared_ptr< Link > > _connectedLinks;
 
 protected:
-    PinMode _pinMode;
+    PinMode 	_pinMode;
+	std::string	_label;
     
 
 };
