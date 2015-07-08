@@ -1,17 +1,18 @@
-#ifndef __OBJECTBLOB_HPP__
-#define __OBJECTBLOB_HPP__
+#pragma once
 
 // STL
 #include <string>
+#include <memory>
 
 namespace monadic
 {
+    class Object;
     class ObjectBlob
     {
         const static int OBJECT_BLOB_NAME_LENGTH = 256;
 
     public:
-        ObjectBlob( const std::string& typeName, const size_t blobSize = 0 );
+        ObjectBlob( monadic::Object* obj, const size_t blobSize = 0 );
         ObjectBlob( void* ptr, std::size_t size );
 
         virtual ~ObjectBlob();
@@ -39,7 +40,7 @@ namespace monadic
         void pushArray( void* ptr, size_t size );
         void popArray(void* ptr, size_t size);
 
-        std::string getTypeName();
+        std::string getType();
 
     private:
         std::string     _typeName;
@@ -55,4 +56,3 @@ namespace monadic
     };
 }
 
-#endif // OBJECTBLOB_HPP

@@ -8,6 +8,7 @@
 
 // STL
 #include <vector>
+#include <map>
 #include <memory>
 
 namespace monadic
@@ -15,10 +16,18 @@ namespace monadic
     class Node : public monadic::Identifiable
     {
     public:
+		// ctor/dtor
         Node(){}
         virtual ~Node(){}
 
-		virtual void build(){}
+		//
+                virtual void init(){}
+
+		// Pins access
+		std::shared_ptr<Pin> pin( const std::string& label );
+
+                //
+
 
     private:
 
@@ -28,7 +37,8 @@ namespace monadic
 		bool checkPinLabelAvailability( const std::string& pinLabel );
 
 		// Variables
-        std::vector< std::shared_ptr<monadic::Pin> > _pins;
+                std::map< std::string, std::shared_ptr<monadic::Pin> >      _pins;
+                std::map< std::string, std::shared_ptr<monadic::Object> >   _attributes;
 
     };
 }

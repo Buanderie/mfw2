@@ -4,9 +4,6 @@
 [submodule "extdeps/picojson"]
 	path = extdeps/picojson
 	url = https://github.com/kazuho/picojson.git
-[submodule "extdeps/cereal"]
-	path = extdeps/cereal
-	url = https://github.com/USCiLab/cereal.git
 [submodule "extdeps/Catch"]
 	path = extdeps/Catch
 	url = https://github.com/philsquared/Catch.git

@@ -11,26 +11,26 @@ namespace monadic
 {
 	std::shared_ptr<Pin> Node::addPin( const std::string& pinLabel, monadic::Pin::PinMode pinMode )
 	{
-		if( !checkPinLabelAvailability( pinLabel ) )
+		if( _pins.find( pinLabel ) != _pins.end() )
+		{
+			// throws
 			return nullptr;
+		}
 
-		std::shared_ptr<monadic::Pin> ret = std::shared_ptr<monadic::Pin>(new Pin( pinMode, pinLabel ));
-		
-		_pins.push_back( ret );
+		std::shared_ptr<monadic::Pin> ret = std::shared_ptr<monadic::Pin>(new Pin(pinMode, pinLabel));
+		_pins.insert( make_pair(pinLabel, ret) );
+
 		return ret;
 	}
 
-	bool Node::checkPinLabelAvailability( const std::string& pinLabel )
+	std::shared_ptr<Pin> Node::pin( const std::string& pinLabel )
 	{
-		bool ret = true;
-		for( std::shared_ptr<Pin> p : _pins )
+		if( _pins.find( pinLabel ) == _pins.end() )
+			// throw, maybe ?
+			return nullptr;
+		else
 		{
-			if( p->label() == pinLabel )
-			{	
-				ret = false;
-				break;
-			}
+			return _pins[ pinLabel ];
 		}
-		return ret;
 	}
 }

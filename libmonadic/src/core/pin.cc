@@ -50,4 +50,14 @@ namespace monadic
 	{
 		return _label;
 	}
+
+	void Pin::onConnect( Link* link )
+	{
+
+	}
+
+	void Pin::onDisconnect( Link* link )
+	{
+
+	}
 }

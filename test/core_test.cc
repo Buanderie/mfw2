@@ -27,5 +27,11 @@ class TestNode : public monadic::Node
 
 TEST_CASE( "Node default constructor", "[node]" )
 {
-	TestNode node();
+     monadic::objects::basic::Number n(45.0);
+     //n.type();
+
+	std::shared_ptr<Node> nodea( new TestNode );
+	std::shared_ptr<Node> nodeb( new TestNode );
+
+	Link l( nodea->pin("out"), nodeb->pin("in") );
 }

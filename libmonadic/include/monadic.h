@@ -10,3 +10,8 @@ int foo();
 
 // OBJECTS DEFINITIONS
 #include "objects/objects.h"
+
+// EXPERIMENTAL
+#include "impl1.h"
+#include "objectproperty.h"
+
