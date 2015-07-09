@@ -1,10 +1,10 @@
 #pragma once
 
-#include "../core/node.h"
+#include "../core/component.h"
 
 namespace monadic
 {
-	class ParamNode : public monadic::Node
+	class ParamNode : public monadic::Component
 	{
 		public:
 

@@ -43,6 +43,9 @@ endif()
 # Cereal
 include_directories( ${MFW_SOURCE_DIR}/extdeps/cereal/include )
 
+# SPDLOG
+include_directories( ${MFW_SOURCE_DIR}/extdeps/spdlog/include )
+
 # Set include directories
 include_directories( ${LIBMONADIC_SOURCE_DIR}/include )
 

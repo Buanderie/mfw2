@@ -1,5 +1,5 @@
 
 // Internal
-#include "nodes/paramnode.h"
+#include "components/paramnode.h"
 
 

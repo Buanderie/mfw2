@@ -1,15 +1,15 @@
 #pragma once
 
 // Internal
-#include "../core/node.h"
+#include "../core/component.h"
 
 namespace monadic
 {
-    class ScriptedNode : public monadic::Node
+    class ScriptedComponent : public monadic::Component
     {
     public:
-        ScriptedNode(){}
-        virtual ~ScriptedNode(){}
+        ScriptedComponent(){}
+        virtual ~ScriptedComponent(){}
 
         static void fromFile( const std::string& filePath );
         static void fromString( const std::string& src );

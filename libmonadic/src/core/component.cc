@@ -1,6 +1,6 @@
 
 // Internal
-#include "core/node.h"
+#include "core/component.h"
 
 // STL
 #include <set>
@@ -9,7 +9,7 @@ using namespace std;
 
 namespace monadic
 {
-	std::shared_ptr<Pin> Node::addPin( const std::string& pinLabel, monadic::Pin::PinMode pinMode )
+    std::shared_ptr<Port> Component::addPort( const std::string& pinLabel, monadic::Port::PinMode pinMode )
 	{
 		if( _pins.find( pinLabel ) != _pins.end() )
 		{
@@ -17,13 +17,13 @@ namespace monadic
 			return nullptr;
 		}
 
-		std::shared_ptr<monadic::Pin> ret = std::shared_ptr<monadic::Pin>(new Pin(pinMode, pinLabel));
+        std::shared_ptr<monadic::Port> ret = std::shared_ptr<monadic::Port>(new Port(pinMode, pinLabel));
 		_pins.insert( make_pair(pinLabel, ret) );
 
 		return ret;
 	}
 
-	std::shared_ptr<Pin> Node::pin( const std::string& pinLabel )
+    std::shared_ptr<Port> Component::port( const std::string& pinLabel )
 	{
 		if( _pins.find( pinLabel ) == _pins.end() )
 			// throw, maybe ?

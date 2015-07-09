@@ -28,6 +28,7 @@ namespace monadic
         size_t size();
         size_t capacity();
         size_t blobs();
+        size_t available();
 
         bool push(const void *data, size_t length );
         size_t peekSize();

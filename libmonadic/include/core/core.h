@@ -1,5 +1,5 @@
 #pragma once
 
-#include "node.h"
-#include "link.h"
-#include "pin.h"
+#include "component.h"
+#include "connection.h"
+#include "port.h"

@@ -50,6 +50,11 @@ size_t monadic::BipBuffer::blobs()
     return _blobs.size();
 }
 
+size_t monadic::BipBuffer::available()
+{
+    return (capacity() - size());
+}
+
 bool monadic::BipBuffer::push( const void *data, size_t length)
 {
     if( length >= _capacity )

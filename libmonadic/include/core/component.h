@@ -1,8 +1,8 @@
 #pragma once
 
 // Internal
-#include "node.h"
-#include "pin.h"
+#include "component.h"
+#include "port.h"
 #include "guid.h"
 #include "identifiable.h"
 
@@ -13,31 +13,32 @@
 
 namespace monadic
 {
-    class Node : public monadic::Identifiable
+    class Component : public monadic::Identifiable
     {
     public:
 		// ctor/dtor
-        Node(){}
-        virtual ~Node(){}
+        Component(){}
+        virtual ~Component(){}
 
 		//
                 virtual void init(){}
 
 		// Pins access
-		std::shared_ptr<Pin> pin( const std::string& label );
+                std::shared_ptr<Port> port( const std::string& label );
 
                 //
+                virtual void tick()=0;
 
 
     private:
 
     protected:
 		// Methods
-		std::shared_ptr<Pin> addPin( const std::string& pinLabel, monadic::Pin::PinMode pinMode );
+                std::shared_ptr<Port> addPort( const std::string& pinLabel, monadic::Port::PinMode pinMode );
 		bool checkPinLabelAvailability( const std::string& pinLabel );
 
 		// Variables
-                std::map< std::string, std::shared_ptr<monadic::Pin> >      _pins;
+                std::map< std::string, std::shared_ptr<monadic::Port> >      _pins;
                 std::map< std::string, std::shared_ptr<monadic::Object> >   _attributes;
 
     };

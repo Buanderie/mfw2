@@ -12,7 +12,7 @@ namespace monadic
 class PacketHeader
 {
 public:
-    PacketHeader( const std::string& senderURI, const std::string& receiverURI, std::chrono::high_resolution_clock::time_point& t ){}
+    PacketHeader( const std::string& senderURI, const std::string& receiverURI, std::chrono::high_resolution_clock::time_point& t );
     virtual ~PacketHeader(){}
 
     static size_t headerSize();
@@ -30,8 +30,8 @@ class Packet
 
 	public:
                 Packet(const std::string& senderName, const std::string& receiverName, std::shared_ptr<Object> obj);
-                Packet( void* rawData, size_t rawDataSize );
-		virtual ~Packet();
+                Packet( void* rawData=0, size_t rawDataSize=0 );
+                virtual ~Packet();
 
                 void* packetData();
                 size_t packetDataSize();

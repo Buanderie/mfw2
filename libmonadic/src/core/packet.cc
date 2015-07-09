@@ -7,13 +7,16 @@
 
 namespace monadic
 {
+    // Packet creation from object
     Packet::Packet( const std::string& senderName, const std::string& receiverName, std::shared_ptr<Object> obj )
-        :_senderName(senderName), _receiverName(receiverName)
+        :_senderName(senderName), _receiverName(receiverName), _data(0)
 	{
 
 	}
 
+    // Object retrieval from packet
     Packet::Packet( void* rawData, size_t rawDataSize )
+        :_data(0)
     {
 
     }
@@ -26,33 +29,8 @@ namespace monadic
         }
     }
 
-    void *Packet::packetData()
-    {
-
-    }
-
     size_t Packet::packetDataSize()
     {
-
-    }
-
-    void *Packet::payloadData()
-    {
-
-    }
-
-    size_t Packet::payloadDataSize()
-    {
-
-    }
-
-    void Packet::reserve_memory(size_t dataSize)
-    {
-
-    }
-
-    void Packet::setPacketHeader(PacketHeader &h)
-    {
-
+        return 156;
     }
 }

@@ -10,3 +10,6 @@
 [submodule "extdeps/cppzmq"]
 	path = extdeps/cppzmq
 	url = https://github.com/zeromq/cppzmq.git
+[submodule "extdeps/spdlog"]
+	path = extdeps/spdlog
+	url = https://github.com/gabime/spdlog.git
